@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{6CACF623-182E-4216-98A1-DC5A9FC89288}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Dll1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ProjectName>Hijackedcclwinrt</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>cclwinrt</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;DLL1_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\RichPresenceApplication\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>cclwinrt.def</ModuleDefinitionFile>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);..\RichPresenceApplication\Binaries\Win64\discord_game_sdk.dll.lib;</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;DLL1_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);..\RichPresenceApplication\Binaries\Win32\discord_game_sdk.dll.lib;</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\RichPresenceApplication\discord\achievement_manager.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\activity_manager.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\application_manager.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\core.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\discord.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\event.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\ffi.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\image_manager.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\lobby_manager.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\network_manager.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\overlay_manager.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\relationship_manager.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\storage_manager.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\store_manager.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\types.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\user_manager.h" />
+    <ClInclude Include="..\RichPresenceApplication\discord\voice_manager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\RichPresenceApplication\discord\achievement_manager.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\activity_manager.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\application_manager.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\core.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\image_manager.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\lobby_manager.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\network_manager.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\overlay_manager.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\relationship_manager.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\storage_manager.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\store_manager.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\types.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\user_manager.cpp" />
+    <ClCompile Include="..\RichPresenceApplication\discord\voice_manager.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="cclwinrt.asm">
+      <FileType>Document</FileType>
+    </MASM>
+    <None Include="cclwinrt.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RichPresenceApplication\RichPresenceApplication.vcxproj">
+      <Project>{a54c3911-3d17-4546-b990-a79c8c54022a}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

@@ -1,0 +1,3 @@
+LIBRARY cclwinrt
+EXPORTS
+	GetNativeWinRTPlatform=PROXY_GetNativeWinRTPlatform @1
